@@ -1,0 +1,38 @@
+import { Tabs } from 'expo-router';
+import { FontAwesome } from '@expo/vector-icons';
+
+export default function AppLayout() {
+  return (
+    <Tabs
+      screenOptions={{
+        headerShown: false,  // This removes the top header
+        tabBarActiveTintColor: '#FF0000',
+        tabBarInactiveTintColor: 'gray',
+        tabBarStyle: {
+          height: 70,
+          paddingBottom: 5,
+          paddingTop: 5,
+        },
+        tabBarIconStyle: {
+          marginTop: 0,
+        },
+        tabBarLabelStyle: {
+          fontSize: 12,
+          marginBottom: 5,
+        },
+      }}>
+      <Tabs.Screen name="index" options={{
+        title: 'Home',
+        tabBarIcon: ({ color }) => (
+          <FontAwesome name="home" size={20} color={color} />
+        ),
+      }} />
+      <Tabs.Screen name="map" options={{
+        title: 'Map',
+        tabBarIcon: ({ color }) => (
+          <FontAwesome name="map" size={20} color={color} />
+        ),
+      }} />
+    </Tabs>
+  );
+}
