@@ -15,10 +15,17 @@ const MapContainer = () => {
   };
 
 
-  const [region, setRegion] = useState(null);
+  
   const [userLocation, setUserLocation] = useState(initialLocation);
   const [mapDelta, setMapDelta] = useState(0.025);
+  const [region, setRegion] = useState({
+    latitude: initialLocation.latitude,
+    longitude: initialLocation.longitude,
+    latitudeDelta: mapDelta,
+    longitudeDelta: mapDelta,
+  });
   const [reportedLocation, setReportedLocation] = useState(null);
+  const [reportedStatus, setReportedStatus] = useState(null);
   const [locationSubscription, setLocationSubscription] = useState(null);
   const mapRef = useRef();
   
@@ -88,8 +95,23 @@ const MapContainer = () => {
     };
 
     setReportedLocation(newReport.coordinate);
+    setReportedStatus(newReport.status);
   };
 
+  const focusOnLocation = () => {
+    if (userLocation.latitude && userLocation.longitude) {
+      const newRegion = {
+        latitude: userLocation.latitude,
+        longitude: userLocation.longitude,
+        latitudeDelta: mapDelta,
+        longitudeDelta: mapDelta
+      };
+      
+      if(mapRef.current) {
+        mapRef.current.animateToRegion(newRegion, 1000);
+      }
+    }
+  }
   
 
 
@@ -97,18 +119,16 @@ const MapContainer = () => {
     <View>
       <MapView 
         showsUserLocation={true}
-        
-
-
-        region={
-          {
-            latitude: userLocation.latitude,
-            longitude: userLocation.longitude,
-            latitudeDelta: mapDelta,
-            longitudeDelta: mapDelta
-          }
-        }
         style={styles.map}
+        initialRegion={{
+          latitude: initialLocation.latitude,
+          longitude: initialLocation.longitude,
+          latitudeDelta: 0.025,
+          longitudeDelta: 0.025,
+        }}
+        region={region}
+        onRegionChangeComplete={setRegion}
+        ref={mapRef}
       >
         { reportedLocation && reportedLocation.latitude && reportedLocation.longitude &&
           <Marker
@@ -118,17 +138,27 @@ const MapContainer = () => {
             }}
             title='User Reported Location'
             description='User: miles1301 ID: 119709979 Date: 01-01-2025' 
+            pinColor={reportedStatus === 'safe' ? "#1fa012" : "#e61f27"}
           />
         }
         
 
       </MapView>
       <View style={styles.buttonContainer}>
-        <LocationButton onReport={handleLocationReport} />
+        <LocationButton onReport={(reportData) => {
+            focusOnLocation();
+            handleLocationReport(reportData);
+        }}
+        />
       </View>
     </View>
   )
 }
+
+//passes in reportData as parameter, 
+//LocationButton calls handleLocationReport with reportData as its parameter after handling onReport
+
+
 
 const styles = StyleSheet.create({
   container: {
@@ -154,6 +184,3 @@ const styles = StyleSheet.create({
 });
 
 export default MapContainer;
-
-
-

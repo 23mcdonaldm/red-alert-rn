@@ -6,7 +6,7 @@ export default function AppLayout() {
     <Tabs
       screenOptions={{
         headerShown: false,  // This removes the top header
-        tabBarActiveTintColor: '#FF0000',
+        tabBarActiveTintColor: '#E61F27',
         tabBarInactiveTintColor: 'gray',
         tabBarStyle: {
           height: 70,

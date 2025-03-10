@@ -9,7 +9,7 @@ const LocationButton = ({ onReport }) => {
 
     const handleReport = () => {
         onReport({
-            status,
+            status: status,
             timestamp: new Date().toISOString(),
         });
     };
@@ -48,7 +48,7 @@ const LocationButton = ({ onReport }) => {
           <TouchableOpacity 
             style={[
               styles.reportButton,
-              { backgroundColor: status === 'safe' ? '#4CAF50' : '#FF5252' }
+              { backgroundColor: status === 'safe' ? '#4CAF50' : '#e61f27' }
             ]}
             onPress={handleReport}
           >

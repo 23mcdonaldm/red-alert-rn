@@ -14,6 +14,8 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,  // This makes the View take up all available space
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   map: {
     width: '100%',
