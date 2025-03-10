@@ -1,4 +1,4 @@
-import { Dimensions, StyleSheet, Text, View } from 'react-native';
+import { Dimensions, StyleSheet, Text, View, Modal, TextInput, TouchableOpacity } from 'react-native';
 import React, { useState, useEffect, useRef } from 'react';
 import MapView, { Marker } from 'react-native-maps';
 import * as Location from 'expo-location';
@@ -27,6 +27,8 @@ const MapContainer = () => {
   const [reportedLocation, setReportedLocation] = useState(null);
   const [reportedStatus, setReportedStatus] = useState(null);
   const [locationSubscription, setLocationSubscription] = useState(null);
+  const [modalVisible, setModalVisible] = useState(false);
+  const [description, setDescription] = useState('');
   const mapRef = useRef();
   
 
@@ -96,7 +98,13 @@ const MapContainer = () => {
 
     setReportedLocation(newReport.coordinate);
     setReportedStatus(newReport.status);
+    setModalVisible(true);
   };
+
+  const handleSubmitDescription = () => {
+    setModalVisible(false);
+    setDescription('submitted');
+  }
 
   const focusOnLocation = () => {
     if (userLocation.latitude && userLocation.longitude) {
@@ -151,12 +159,38 @@ const MapContainer = () => {
         }}
         />
       </View>
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => setModalVisible(false)}
+      >
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+            <Text style={styles.modalText}>✓ Report Submitted</Text>
+            <TextInput
+              style={styles.input}
+              placeholder="Add a description (optional)"
+              value={description}
+              onChangeText={setDescription}
+              multiline
+            />
+            <TouchableOpacity
+              style={styles.submitButton}
+              onPress={handleSubmitDescription}
+            >
+              <Text style={styles.submitButtonText}>Submit</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
     </View>
   )
 }
 
 //passes in reportData as parameter, 
-//LocationButton calls handleLocationReport with reportData as its parameter after handling onReport
+//LocationButton calls handleLocationReport with reportData as its parameter 
+//after handling onReport
 
 
 
@@ -181,6 +215,56 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     zIndex: 1,  // Ensure it's above the map
   },
+
+  centeredView: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)', // semi-transparent background
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: 'white',
+    borderRadius: 20,
+    padding: 35,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: 'center',
+    fontSize: 18,
+    fontWeight: 'bold'
+  },
+  input: {
+    width: 250,
+    height: 100,
+    borderColor: 'gray',
+    borderWidth: 1,
+    borderRadius: 10,
+    padding: 10,
+    marginBottom: 15,
+    textAlignVertical: 'top'
+  },
+  submitButton: {
+    backgroundColor: '#2196F3',
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2,
+    width: 100
+  },
+  submitButtonText: {
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center'
+  }
 });
 
 export default MapContainer;
