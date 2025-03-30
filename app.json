@@ -4,7 +4,7 @@
     "slug": "redalertapp",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/omal-logo-o.png",
+    "icon": "./assets/images/ra-logo.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
@@ -15,7 +15,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/omal-logo-o.png",
+        "foregroundImage": "./assets/images/ra-logo.png",
         "backgroundColor": "#ffffff"
       },
       "package": "com.redalert.redalertapp",
@@ -24,10 +24,10 @@
     "web": {
       "bundler": "metro",
       "output": "static",
-      "favicon": "./assets/images/omal-logo-o.png"
+      "favicon": "./assets/images/ra-logo.png"
     },
     "splash": {
-      "image": "./assets/images/omal-logo-o.png",
+      "image": "./assets/images/ra-logo.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -36,7 +36,7 @@
       [
         "expo-splash-screen",
         {
-          "image": "./assets/images/omal-logo-o.png",
+          "image": "./assets/images/ra-logo.png",
           "imageWidth": 200,
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"

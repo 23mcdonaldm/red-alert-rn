@@ -408,7 +408,7 @@ export default function LoginScreen() {
       )}
       <View className="flex-1 justify-center items-center p-6">
         <Image
-          source={require("../../assets/images/omal-logo-o.png")}
+          source={require("../../assets/images/ra-logo.png")}
           style={{ width: 120, height: 120 }}
           className="mb-12"
         />
@@ -418,13 +418,13 @@ export default function LoginScreen() {
             className="text-5xl font-bold mb-3 text-center"
             style={{ color: Brand.primary }}
           >
-            GET MILES.
+            SCHOOL SAFETY.
           </Text>
           <Text
             className="text-4xl font-bold text-center"
             style={{ color: Brand.secondary }}
           >
-            GET PAID.
+            AT YOUR FINGERTIPS.
           </Text>
         </View>
 
