@@ -1,5 +1,6 @@
 import { useFonts } from "expo-font";
 import { Stack, useRouter, useSegments } from "expo-router";
+
 import { getAuth } from "firebase/auth";
 import auth from "@react-native-firebase/auth";
 import * as SplashScreen from "expo-splash-screen";
@@ -48,10 +49,10 @@ export default function ReduxLayout() {
       if (firebaseUser) {
         dispatch(
           login({
-            uid: firebaseUser.uid,
-            email: firebaseUser.email,
-            displayName: firebaseUser.displayName,
-            photoURL: firebaseUser.photoURL,
+            uid: firebaseUser.uid || "",
+            email: firebaseUser.email || "",
+            displayName: firebaseUser.displayName | "Unknown User",
+            photoURL: firebaseUser.photoURL || "",
             role: null,
           })
         );

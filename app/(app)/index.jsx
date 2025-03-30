@@ -17,6 +17,8 @@ import { setRole } from "@/store/slices/authSlice";
 import { Colors, Brand } from "@/constants/Colors";
 import { useColorScheme } from "nativewind";
 
+import MyButton from "@/components/MyButton";
+
 export default function GoogleSignInScreen() {
   const [isLoading, setIsLoading] = useState(false);
   const { userData: user } = useSelector((state) => state.auth);
@@ -143,6 +145,7 @@ export default function GoogleSignInScreen() {
                 )}
               </TouchableOpacity>
             </View>
+            <MyButton title="Map" href="/map" />
 
             {/* User Information Card */}
             <View 
@@ -162,10 +165,10 @@ export default function GoogleSignInScreen() {
                 }}
               />
               <Text style={{ color: colorScheme === 'dark' ? Colors.dark.text : Colors.light.text }} className="text-2xl font-bold mb-3">
-                {user.displayName}
+                Display Name: {user.displayName}
               </Text>
               <Text style={{ color: colorScheme === 'dark' ? Colors.dark.textSecondary : Colors.light.textSecondary }} className="text-lg mb-3">
-                {user.email}
+                Email: {user.email}
               </Text>
               <Text style={{ color: colorScheme === 'dark' ? Colors.dark.textSecondary : Colors.light.textSecondary }} className="text-lg">
                 Role: {user.role}
