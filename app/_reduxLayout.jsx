@@ -98,7 +98,7 @@ export default function ReduxLayout() {
         <Stack.Screen name="(app)" />
         <Stack.Screen name="+not-found" />
       </Stack>
-      <SafeAreaView className="absolute bottom-4 right-4">
+      <SafeAreaView className="absolute bottom-24 right-4">
         <ThemeSwitcher />
       </SafeAreaView>
     </>

@@ -1,10 +1,10 @@
-// Brand Colors
-const brandColors = {
-  primary: '#FF6B00', // Brighter Orange
-  secondary: '#FFD700', // Brighter Yellow
+
+export const brandColors = {
+  primary: '#e61f27',   // Red Alert Theme
+  secondary: '#5A5D5F', // Dark for contrast and professionalism
+  accent: '#FFD700',    // Golden Yellow for highlights
 };
 
-// Theme Colors
 export const Colors = {
   light: {
     // Text Colors
@@ -24,6 +24,7 @@ export const Colors = {
     // Brand Colors
     primary: brandColors.primary,
     secondary: brandColors.secondary,
+    accent: brandColors.accent,
     
     // Component Colors
     card: '#FFFFFF',
@@ -38,7 +39,7 @@ export const Colors = {
     textTertiary: '#808080',
     
     // Background Colors
-    background: '#121212', // Slightly softer black
+    background: '#121212',
     backgroundSecondary: '#1E1E1E',
     backgroundTertiary: '#2D2D2D',
     
@@ -49,6 +50,7 @@ export const Colors = {
     // Brand Colors
     primary: brandColors.primary,
     secondary: brandColors.secondary,
+    accent: brandColors.accent,
     
     // Component Colors
     card: '#1E1E1E',
@@ -57,6 +59,7 @@ export const Colors = {
     placeholder: '#808080',
   },
 };
+
 
 // Export brand colors separately for direct access
 export const Brand = brandColors;

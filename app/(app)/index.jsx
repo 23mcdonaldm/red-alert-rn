@@ -75,7 +75,7 @@ export default function GoogleSignInScreen() {
             </Text>
             {/* OMAL Logo */}
             <Image
-              source={require("../../assets/images/omal-logo-o.png")}
+              source={require("../../assets/images/ra-logo.png")}
               style={{ width: 120, height: 120, marginBottom: 24 }}
             />
             <Text style={{ color: colorScheme === 'dark' ? Colors.dark.text : Colors.light.text }} className="text-2xl font-bold mb-6">
@@ -84,28 +84,28 @@ export default function GoogleSignInScreen() {
             <TouchableOpacity
               className="flex-row justify-center items-center p-5 mb-4 rounded-xl w-full"
               style={{ backgroundColor: colorScheme === 'dark' ? Colors.dark.card : Colors.light.card }}
-              onPress={() => handleRoleSelection("Freelancer")}
+              onPress={() => handleRoleSelection("Student")}
             >
               <Text style={{ color: colorScheme === 'dark' ? Colors.dark.text : Colors.light.text }} className="text-xl font-semibold">
-                Freelancer
+                Student
               </Text>
             </TouchableOpacity>
             <TouchableOpacity
               className="flex-row justify-center items-center p-5 mb-4 rounded-xl w-full"
               style={{ backgroundColor: colorScheme === 'dark' ? Colors.dark.card : Colors.light.card }}
-              onPress={() => handleRoleSelection("Educator")}
+              onPress={() => handleRoleSelection("Administrator")}
             >
               <Text style={{ color: colorScheme === 'dark' ? Colors.dark.text : Colors.light.text }} className="text-xl font-semibold">
-                Educator
+                Administrator
               </Text>
             </TouchableOpacity>
             <TouchableOpacity
               className="flex-row justify-center items-center p-5 mb-4 rounded-xl w-full"
               style={{ backgroundColor: colorScheme === 'dark' ? Colors.dark.card : Colors.light.card }}
-              onPress={() => handleRoleSelection("Client")}
+              onPress={() => handleRoleSelection("Guardian")}
             >
               <Text style={{ color: colorScheme === 'dark' ? Colors.dark.text : Colors.light.text }} className="text-xl font-semibold">
-                Client
+                Guardian
               </Text>
             </TouchableOpacity>
           </View>
