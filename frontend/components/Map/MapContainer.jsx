@@ -1,9 +1,8 @@
-import { Dimensions, StyleSheet, Text, View, Modal, TextInput, TouchableOpacity } from 'react-native';
+import { Platform, Dimensions, StyleSheet, Text, View, Modal, TextInput, TouchableOpacity } from 'react-native';
 import React, { useState, useEffect, useRef } from 'react';
-import MapView, { Marker } from 'react-native-maps';
+import MapView, { Marker, PROVIDER_GOOGLE, PROVIDER_DEFAULT } from 'react-native-maps';
 import * as Location from 'expo-location';
 import LocationButton from '@/components/Map/LocationButton';
-import { Platform } from 'react-native';
 
 
 let locationPermissionGranted = false;
@@ -122,13 +121,11 @@ const MapContainer = () => {
       }
     }
   }
-  
-
 
   return (
     <View>
       <MapView 
-        
+        {...(Platform.OS === 'android' ? { provider: PROVIDER_GOOGLE } : { provider: PROVIDER_DEFAULT })}
         showsUserLocation={true}
         style={styles.map}
         initialRegion={{
@@ -207,12 +204,12 @@ const styles = StyleSheet.create({
   },
 
   map: {
-    width: Dimensions.get('window').width,
-    height: Dimensions.get('window').height,
+    width: '100%',
+    height: '100%',
   },
   buttonContainer: {
     position: 'absolute',
-    bottom: 68,  // Increased from 40 to 80 to move it up
+    bottom: -20,  // Increased from 40 to 80 to move it up
     left: 0,
     right: 0,
     alignItems: 'center',
