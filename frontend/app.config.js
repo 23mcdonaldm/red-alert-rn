@@ -13,7 +13,7 @@ export default {
     icon: "./assets/images/ra-logo.png",
     scheme: "myapp",
     userInterfaceStyle: "automatic",
-    newArchEnabled: true,
+    newArchEnabled: false,
     ios: {
       supportsTablet: true,
       bundleIdentifier: "com.redalert.redalertapp",

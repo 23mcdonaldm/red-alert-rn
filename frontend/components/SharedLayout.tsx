@@ -5,7 +5,7 @@ import NavigationHeader from "@/components/NavigationHeader";
 import { Platform } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { Colors } from "@/constants/Colors";
-import { NavigationProp, useRoute, getFocusedRouteNameFromRoute } from "@react-navigation/native";
+import { NavigationProp, useNavigationState } from "@react-navigation/native";
 
 type NavigationItem = {
   name: string;
@@ -46,17 +46,17 @@ export default function SharedLayout({
 }: SharedLayoutProps) {
   const { colorScheme } = useColorScheme();
   const isDark = colorScheme === "dark";
-  const route = useRoute();
-  const currRoute = getActiveRouteName(route);
+  
+
 
   if (Platform.OS !== "web") {
     return (
       <Tabs
         screenOptions={{
-          header: ({ navigation }: { navigation: any }) => (
+          header: ({ navigation, route }: { navigation: any, route: any}) => (
             <NavigationHeader
               navigation={navigation}
-              currentRoute={currRoute}
+              currentRoute={route}
               logoSource={require("@/assets/images/ra-logo.png")}
               navigationItems={[]} // Empty since we're using Tabs
               rightActions={rightActions}
@@ -112,10 +112,10 @@ export default function SharedLayout({
   return (
     <Stack
       screenOptions={{
-        header: ({ navigation }: { navigation: any }) => (
+        header: ({ navigation, route }: { navigation: any, route: any }) => (
           <NavigationHeader
             navigation={navigation}
-            currentRoute={currRoute}
+            currentRoute={route}
             logoSource={require("@/assets/images/ra-logo.png")}
             navigationItems={navigationItems}
             rightActions={rightActions}

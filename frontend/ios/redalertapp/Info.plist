@@ -22,6 +22,12 @@
     <string>1.0.0</string>
     <key>CFBundleSignature</key>
     <string>????</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>This app needs access to your location to show your real-time position on the map.</string>
+    <key>NSLocationAlwaysUsageDescription</key>
+    <string>This app needs access to your location even when running in the background to ensure safety tracking.</string>
+    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+    <string>This app needs access to your location at all times for emergency safety tracking.</string>
     <key>CFBundleURLTypes</key>
     <array>
       <dict>
