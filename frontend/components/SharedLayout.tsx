@@ -5,7 +5,7 @@ import NavigationHeader from "@/components/NavigationHeader";
 import { Platform } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { Colors } from "@/constants/Colors";
-import { NavigationProp } from "@react-navigation/native";
+import { NavigationProp, useRoute, getFocusedRouteNameFromRoute } from "@react-navigation/native";
 
 type NavigationItem = {
   name: string;
@@ -34,6 +34,10 @@ type SharedLayoutProps = {
   hiddenScreens?: string[];
 };
 
+const getActiveRouteName = (route: { name: string }) => {
+  return route.name === "index" ? "home" : route.name;
+};
+
 export default function SharedLayout({
   navigationItems,
   rightActions,
@@ -42,20 +46,18 @@ export default function SharedLayout({
 }: SharedLayoutProps) {
   const { colorScheme } = useColorScheme();
   const isDark = colorScheme === "dark";
-
-  const getActiveRouteName = (route: { name: string }) => {
-    return route.name === "index" ? "home" : route.name;
-  };
+  const route = useRoute();
+  const currRoute = getActiveRouteName(route);
 
   if (Platform.OS !== "web") {
     return (
       <Tabs
         screenOptions={{
-          header: ({ navigation, route }) => (
+          header: ({ navigation }: { navigation: any }) => (
             <NavigationHeader
               navigation={navigation}
-              currentRoute={route.name}
-              logoSource={require("@/assets/images/omal-logo.png")}
+              currentRoute={currRoute}
+              logoSource={require("@/assets/images/ra-logo.png")}
               navigationItems={[]} // Empty since we're using Tabs
               rightActions={rightActions}
             />
@@ -85,7 +87,7 @@ export default function SharedLayout({
             name={tab.name}
             options={{
               title: tab.title,
-              tabBarIcon: ({ color }) =>
+              tabBarIcon: ({ color }: {color: any}) =>
                 tab.iconComponent ? (
                   <tab.iconComponent color={color} />
                 ) : (
@@ -110,11 +112,11 @@ export default function SharedLayout({
   return (
     <Stack
       screenOptions={{
-        header: ({ navigation, route }) => (
+        header: ({ navigation }: { navigation: any }) => (
           <NavigationHeader
             navigation={navigation}
-            currentRoute={route.name}
-            logoSource={require("@/assets/images/omal-logo.png")}
+            currentRoute={currRoute}
+            logoSource={require("@/assets/images/ra-logo.png")}
             navigationItems={navigationItems}
             rightActions={rightActions}
           />

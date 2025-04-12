@@ -31,9 +31,9 @@ export default function FreelancerLayout() {
       filledIcon: "chatbubbles",
     },
     {
-      name: "search",
-      icon: "search-outline",
-      filledIcon: "search",
+      name: "map",
+      icon: "map-outline",
+      filledIcon: "map",
     },
   ];
 
@@ -58,9 +58,9 @@ export default function FreelancerLayout() {
       icon: "home-outline",
     },
     {
-      name: "search",
-      title: "Search",
-      icon: "search",
+      name: "map",
+      title: "Map",
+      icon: "map-outline",
     },
     {
       name: "forum",
