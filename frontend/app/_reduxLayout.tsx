@@ -59,13 +59,6 @@ export default function ReduxLayout() {
 
   const isReady = loaded && !initializing;
 
-  const isClientSearch =
-  Platform.OS !== "web" &&
-  segments.length >= 2 &&
-  segments[0] === "(app)" &&
-  segments[1] === "client" &&
-  segments[2] === "search";
-
   useEffect(() => {
     setLayoutMounted(true);
     return () => setLayoutMounted(false);

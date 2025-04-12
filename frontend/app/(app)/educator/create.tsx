@@ -1,7 +1,7 @@
 import React from "react";
 import { Text } from "react-native";
 
-export default function Search() {
+export default function Create() {
   return (
     <>
       <Text>Hellow</Text>

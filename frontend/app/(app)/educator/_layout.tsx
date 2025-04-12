@@ -23,7 +23,7 @@ type TabConfig = {
   iconComponent?: React.ComponentType<{ color: string }>;
 };
 
-export default function EducatorLayout() {
+export default function AdministratorLayout() {
   const navigationItems: NavigationItem[] = [
     {
       name: "qanda",
@@ -31,7 +31,7 @@ export default function EducatorLayout() {
       filledIcon: "chatbubbles",
     },
     {
-      name: "search",
+      name: "create",
       icon: "search-outline",
       filledIcon: "search",
     },
