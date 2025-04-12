@@ -1,4 +1,4 @@
-package com.omalsolutions.omalappdev
+package com.redalert.redalertapp
 
 import android.app.Application
 import android.content.res.Configuration

@@ -21,7 +21,7 @@ extensions.configure(com.facebook.react.ReactSettingsExtension) { ex ->
   }
 }
 
-rootProject.name = 'omal-appdev'
+rootProject.name = 'redalertapp'
 
 dependencyResolutionManagement {
   versionCatalogs {

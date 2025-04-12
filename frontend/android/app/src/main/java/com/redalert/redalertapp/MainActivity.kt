@@ -1,4 +1,4 @@
-package com.omalsolutions.omalappdev
+package com.redalert.redalertapp
 import expo.modules.splashscreen.SplashScreenManager
 
 import android.os.Build
